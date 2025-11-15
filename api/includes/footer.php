@@ -1,22 +1,12 @@
-<footer class="py-6 md:px-8 md:py-0">
-  <div class="container
-              flex flex-col items-center justify-between gap-2   <!-- gap 改小 -->
-              md:h-24 md:flex-row">
-    <p class="text-center text-sm text-muted-foreground
-              leading-normal md:text-left">
-      <span>© 2025 ZeinkLab. All rights reserved. | 
-        <a href="https://zeinklab.com" target="_blank"
-           class="font-medium underline underline-offset-4">ZeinkLab</a>
-      </span>
-        <br/>
-      <span>
-        Built by
-        <a href="https://github.com/JanePHPDev/ZuzShortURL" target="_blank" rel="noreferrer"
-           class="font-medium underline underline-offset-4">JanePHPDev</a>.
-        Source on
-        <a href="https://github.com/JanePHPDev/ZuzShortURL" target="_blank" rel="noreferrer"
-           class="font-medium underline underline-offset-4">GitHub</a>.
-      </span>
-    </p>
+<footer class="py-8 md:px-8 md:py-0">
+  <div class="container flex items-center justify-center md:h-24">
+    <!-- 图标和标题 -->
+    <a href="https://t.me/CitizenScyureview" target="_blank" rel="noreferrer" 
+       class="flex items-center gap-3 transition-opacity hover:opacity-80">
+      <img src="https://cloudpaste-backend.scyucitizen1.workers.dev/api/file-download/ico" 
+           alt="Logo" 
+           class="h-8 w-8 rounded-lg shadow-sm">
+      <span class="text-base font-semibold text-foreground">麦克阿象的笔记</span>
+    </a>
   </div>
 </footer>
