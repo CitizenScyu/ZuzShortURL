@@ -9,17 +9,10 @@
 [![GitHub issues](https://img.shields.io/github/issues/JanePHPDev/ZuzShortURL)](https://github.com/JanePHPDev/ZuzShortURL/issues)
 
 基于PHP + PostgreSQL构建的、为创业团队、电商平台及中小型企业量身打造的下一代短链接SaaS解决方案。:rocket:
-
-[在线Demo](https://zuz.asia) | [项目官网](https://zeinklab.com/)  
-Demo站后台地址：https://zuz.asia/admin  
-Demo站后台token：admintoken  
+[项目官网](https://zeinklab.com/)
 Demo站会定时清空数据，请勿长期使用，需要短链接服务请访问官网
 
 ![ZuzShortURL UI预览截图](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/46cc19f8046633fa.png)
-
-> *Release仅用于版本发布，使用时请Fork本仓库或点击一键部署。*  
-> *由于Vercel与PHP存在部分冲突，故依赖Composer的功能如二维码生成及活码管理~~退出上线~~。* [^1]  
-> *当前仓库内为1.1.9-C2稳定版更新，Docker仓库已同步更新。*
 
 ![Star History Chart](https://api.star-history.com/svg?repos=JanePHPDev/ZuzShortURL&type=Date)
 
@@ -251,5 +244,3 @@ Fork本仓库后，进入Vercel控制台导入该项目，按照环境变量格�
 如果你有新的想法，请提交Issue，我会视情况采纳；若发现项目有紧急漏洞或安全漏洞，请发送邮件到Master@Zeapi.ink。  
 你可以自由 fork 并维护自己的分支，但**不要试图将修改合并回本仓库**。  
 :no_entry:这不是开源的标准做法，但这是我选择的方式。
-
-[^1]: 此处使用删除线表示功能调整，但实际未完全退出，仅受Vercel限制。
