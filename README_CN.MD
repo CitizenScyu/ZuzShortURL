@@ -12,9 +12,7 @@
 [项目官网](https://zeinklab.com/)
 Demo站会定时清空数据，请勿长期使用，需要短链接服务请访问官网
 
-![ZuzShortURL UI预览截图](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/46cc19f8046633fa.png)
-
-![Star History Chart](https://api.star-history.com/svg?repos=JanePHPDev/ZuzShortURL&type=Date)
+![ZuzShortURL UI预览截图](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/feb5aa72c86265b2.png)
 
 ## 目录
 
