@@ -14,13 +14,9 @@ A next-generation short URL SaaS solution built with PHP + PostgreSQL, tailored 
 Demo Admin URL: https://zuz.asia/admin  
 Demo Admin Token: admintoken  
 The demo site clears data periodically—please don't use it for long-term needs. For production short URL services, visit the official site.
-http://zeink.cc/lYaZf
 
 ![ZuzShortURL ui-View Screenshots](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/46cc19f8046633fa.png)
 
-> *Releases are for version announcements only. For usage, please fork this repo or use one-click deployment.*  
-> *Due to some conflicts between Vercel and PHP, features relying on Composer—like QR code generation and live code management—have been ~~temporarily suspended~~.* [^1]  
-> *The current warehouse is updated with the 1.1.9-C2 stable version, and the Docker warehouse has been updated synchronously.*
 
 ![Star History Chart](https://api.star-history.com/svg?repos=JanePHPDev/ZuzShortURL&type=Date)
 
@@ -252,5 +248,3 @@ However, **I explicitly reject all pull requests (PRs)**. Please **do not submit
 If you have new ideas, open an Issue instead, and I'll consider them. For urgent bugs or security issues, email Master@Zeapi.ink.  
 You're welcome to fork and maintain your own branch, but **do not attempt to merge changes back into this repo**.  
 :no_entry: This isn't standard open-source practice, but it's my choice.
-
-[^1]: Strikethrough here indicates a feature adjustment, but it's not fully removed—only limited by Vercel.
