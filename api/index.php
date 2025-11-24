@@ -175,7 +175,7 @@ if ($path === '/' || $path === '') {
             <section class="py-20 md:py-28 bg-zinc-100 dark:bg-zinc-800/50">
                 <div class="container mx-auto px-4">
                     <div class="max-w-4xl mx-auto text-center">
-                        <img src="https://i.loli.net/2021/10/23/uR3P4gYcZNSLmXv.png" alt="CEO" class="w-24 h-24 rounded-full mx-auto mb-6">
+                        <img src="https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/4dec4c19b1a8b418.png" alt="CEO" class="w-24 h-24 rounded-full mx-auto mb-6">
                         <p class="text-xl md:text-2xl font-light text-zinc-800 dark:text-zinc-200 italic leading-relaxed">
                             “我们的目标是为用户提供最快速、最稳定、最安全的短链接服务，帮助他们在数字世界中更高效地分享和连接。”
                         </p>
