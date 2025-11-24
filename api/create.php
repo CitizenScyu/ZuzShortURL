@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="bg-background text-foreground min-h-screen">
     <?php include 'includes/header.php'; ?>
-    <div class="container mx-auto p-4 pt-20">
+    <main class="main-content container mx-auto">
         <div class="max-w-lg mx-auto bg-card rounded-lg border p-6">
             <h2 class="text-2xl font-bold mb-6 text-center">创建短链接</h2>
             <?php if ($error): ?>
@@ -103,11 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
                 <div class="mb-4">
                     <label class="block text-sm font-medium mb-2">长链接</label>
-                    <input type="url" name="url" class="w-full px-3 py-2 border border-input rounded-md" placeholder="https://example.com" required>
+                    <input type="url" name="url" class="w-full px-3 py-2 border border-input rounded-md bg-transparent" placeholder="https://example.com" required>
                 </div>
                 <div class="mb-4">
                     <label class="block text-sm font-medium mb-2">自定义短码（可选）</label>
-                    <input type="text" name="custom_code" class="w-full px-3 py-2 border border-input rounded-md" placeholder="自定义短码" maxlength="10">
+                    <input type="text" name="custom_code" class="w-full px-3 py-2 border border-input rounded-md bg-transparent" placeholder="自定义短码" maxlength="10">
                 </div>
                 <?php if ($is_logged_in): ?>
                 <div class="mb-4">
@@ -121,16 +121,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="mb-4">
                     <label class="block text-sm font-medium mb-2">转跳延迟（秒，可选）</label>
-                    <input type="number" name="redirect_delay" class="w-full px-3 py-2 border border-input rounded-md" min="0" value="0">
+                    <input type="number" name="redirect_delay" class="w-full px-3 py-2 border border-input rounded-md bg-transparent" min="0" value="0">
                 </div>
                 <div class="mb-4">
                     <label class="block text-sm font-medium mb-2">链接密码（可选）</label>
-                    <input type="password" name="link_password" class="w-full px-3 py-2 border border-input rounded-md" placeholder="设置密码以加密链接">
+                    <input type="password" name="link_password" class="w-full px-3 py-2 border border-input rounded-md bg-transparent" placeholder="设置密码以加密链接">
                 </div>
                 <?php endif; ?>
                 <div class="mb-6">
                     <label class="block text-sm font-medium mb-2">过期日期（可选）</label>
-                    <input type="date" name="expiration" class="w-full px-3 py-2 border border-input rounded-md">
+                    <input type="date" name="expiration" class="w-full px-3 py-2 border border-input rounded-md bg-transparent">
                 </div>
                 <?php if (get_setting($pdo, 'turnstile_enabled') === 'true'): ?>
                 <div class="cf-turnstile" data-sitekey="<?php echo htmlspecialchars(get_setting($pdo, 'turnstile_site_key')); ?>"></div>
@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </ul>
             </div>
         <?php endif; ?>
-    </div>
+    </main>
     <?php include 'includes/footer.php'; ?>
     <script>
         function copyToClipboard(id) {

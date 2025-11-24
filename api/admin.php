@@ -272,6 +272,7 @@ ORDER BY day ASC
     <script src="includes/script.js"></script>
     <link rel="stylesheet" href="includes/styles.css">
     <script src="https://cdn.mengze.vip/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
     .chart-container {
         position: relative;
@@ -510,42 +511,26 @@ ORDER BY day ASC
                             </div>
                             <div class="md:hidden space-y-4">
                                 <?php foreach ($links as $link): ?>
-                                    <div class="bg-card rounded-lg border p-4 shadow-sm">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <span class="text-sm font-medium truncate max-w-[calc(100%-120px)]"><?php echo htmlspecialchars($short_domain_url . '/' . $link['shortcode']); ?></span>
-                                            <div class="flex space-x-3 items-center">
-                                                <button onclick="openEditLinkModal('<?php echo htmlspecialchars($link['shortcode']); ?>', '<?php echo htmlspecialchars(addslashes($link['longurl'])); ?>', <?php echo $link['enable_intermediate_page'] ? 'true' : 'false'; ?>, <?php echo $link['redirect_delay']; ?>, '<?php echo $link['link_password'] ? '***' : ''; ?>', '<?php echo $link['expiration_date'] ? htmlspecialchars($link['expiration_date']) : ''; ?>', '<?php echo $link['user_id'] ?: ''; ?>')" class="text-black hover:text-gray-700">
-                                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                                    </svg>
-                                                </button>
-                                                <button onclick="copyToClipboardText('<?php echo htmlspecialchars($short_domain_url . '/' . $link['shortcode']); ?>')" class="text-black hover:text-gray-700">
-                                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.102 1.101" />
-                                                    </svg>
-                                                </button>
-                                                <button onclick="openLinkInfoModal(<?php echo json_encode($link); ?>)" class="text-black hover:text-gray-700">
-                                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                    </svg>
-                                                </button>
+                                    <div class="bg-card rounded-lg border p-4 shadow-sm space-y-3">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <a href="<?php echo htmlspecialchars($short_domain_url . '/' . $link['shortcode']); ?>" target="_blank" class="text-sm font-semibold text-primary hover:underline"><?php echo htmlspecialchars($short_domain_url . '/' . $link['shortcode']); ?></a>
+                                                <p class="text-xs text-muted-foreground truncate" title="<?php echo htmlspecialchars($link['longurl']); ?>"><?php echo htmlspecialchars(mb_strimwidth($link['longurl'], 0, 54, '...')); ?></p>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button onclick="openEditLinkModal('<?php echo htmlspecialchars($link['shortcode']); ?>', '<?php echo htmlspecialchars(addslashes($link['longurl'])); ?>', <?php echo $link['enable_intermediate_page'] ? 'true' : 'false'; ?>, <?php echo $link['redirect_delay']; ?>, '<?php echo $link['link_password'] ? '***' : ''; ?>', '<?php echo $link['expiration_date'] ? htmlspecialchars($link['expiration_date']) : ''; ?>', '<?php echo $link['user_id'] ?: ''; ?>')" class="p-1.5 text-muted-foreground hover:text-foreground"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg></button>
                                                 <form method="post" class="inline" onsubmit="return confirm('删除?');">
                                                     <input type="hidden" name="action" value="delete_link">
                                                     <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
                                                     <input type="hidden" name="code" value="<?php echo htmlspecialchars($link['shortcode']); ?>">
-                                                    <button type="submit" class="text-red-600 hover:text-red-900">
-                                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
-                                                    </button>
+                                                    <button type="submit" class="p-1.5 text-destructive hover:text-destructive/80"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
                                                 </form>
                                             </div>
                                         </div>
-                                        <div class="flex items-center space-x-2">
-                                            <svg class="h-5 w-5 text-muted-foreground flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.102 1.101" />
-                                            </svg>
-                                            <span class="text-sm truncate max-w-[calc(100%-28px)]" title="<?php echo htmlspecialchars($link['longurl']); ?>"><?php echo htmlspecialchars($link['longurl']); ?></span>
+                                        <div class="flex items-center justify-between text-xs text-muted-foreground">
+                                            <span>点击: <?php echo $link['clicks']; ?></span>
+                                            <span>用户: <?php echo $link['user_id'] ?: '匿名'; ?></span>
+                                            <span>创建于: <?php echo date('y-m-d', strtotime($link['created_at'])); ?></span>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
@@ -553,11 +538,11 @@ ORDER BY day ASC
                             <div class="hidden md:block overflow-x-auto">
                                 <div class="inline-block min-w-full align-middle">
                                     <div class="overflow-hidden border border-border rounded-lg shadow-sm">
-                                        <table class="min-w-full divide-y divide-border">
+                                        <table class="min-w-full divide-y divide-border table-fixed">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">短链接</th>
-                                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">长链接</th>
+                                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-2/5">长链接</th>
                                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">用户ID</th>
                                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">点击量</th>
                                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">创建时间</th>
@@ -580,7 +565,7 @@ ORDER BY day ASC
                                                             </div>
                                                         </td>
                                                         <td class="px-6 py-4 text-sm text-foreground">
-                                                            <div class="truncate max-w-[300px]" title="<?php echo htmlspecialchars($link['longurl']); ?>"><?php echo htmlspecialchars($link['longurl']); ?></div>
+                                                            <div class="truncate break-all" title="<?php echo htmlspecialchars($link['longurl']); ?>"><?php echo htmlspecialchars($link['longurl']); ?></div>
                                                         </td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground"><?php echo $link['user_id'] ?: '匿名'; ?></td>
                                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground"><?php echo $link['clicks']; ?></td>
@@ -609,128 +594,51 @@ ORDER BY day ASC
                     <?php elseif ($active_tab === 'users'): ?>
                         <section>
                             <h2 class="text-2xl font-bold mb-4">用户管理</h2>
-                            <div class="md:hidden space-y-4">
+                            <div class="space-y-4">
                                 <?php foreach ($users as $user): ?>
-                                    <div class="bg-card rounded-lg border p-4 shadow-sm">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <span class="text-sm font-medium truncate max-w-[calc(100%-80px)]"><?php echo htmlspecialchars($user['username']); ?></span>
-                                            <div class="flex space-x-3 items-center">
-                                                <a href="?tab=users&edit_user=<?php echo $user['id']; ?>" class="text-indigo-600 hover:text-indigo-900">
-                                                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                                    </svg>
-                                                </a>
-                                                <form method="post" class="inline" onsubmit="return confirm('删除用户及其链接?');">
-                                                    <input type="hidden" name="action" value="delete_user">
-                                                    <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
-                                                    <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
-                                                    <button type="submit" class="text-red-600 hover:text-red-900">
-                                                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
+                                    <div class="bg-card rounded-lg border shadow-sm" x-data="{ open: <?php echo ($edit_user_id == $user['id']) ? 'true' : 'false'; ?> }">
+                                        <div class="p-4 flex justify-between items-center cursor-pointer" @click="open = !open">
+                                            <div>
+                                                <p class="font-semibold"><?php echo htmlspecialchars($user['username']); ?></p>
+                                                <p class="text-sm text-muted-foreground">注册于: <?php echo date('Y-m-d', strtotime($user['created_at'])); ?></p>
+                                            </div>
+                                            <div class="flex items-center space-x-4">
+                                                <span class="text-sm text-muted-foreground">链接数: <?php echo $pdo->query("SELECT COUNT(*) FROM short_links WHERE user_id = {$user['id']}")->fetchColumn(); ?></span>
+                                                <button class="text-muted-foreground hover:text-foreground">
+                                                    <svg class="h-5 w-5 transition-transform" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="flex items-center space-x-2">
-                                            <svg class="h-5 w-5 text-muted-foreground flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                            <span class="text-sm truncate max-w-[calc(100%-28px)]"><?php echo date('Y-m-d H:i', strtotime($user['created_at'])); ?></span>
+                                        <div x-show="open" x-transition class="p-4 border-t border-border">
+                                            <h4 class="text-lg font-semibold mb-4">编辑用户</h4>
+                                            <form method="post">
+                                                <input type="hidden" name="action" value="edit_user">
+                                                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
+                                                <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                                    <div>
+                                                        <label class="text-sm font-medium">用户名</label>
+                                                        <input type="text" name="new_username" class="mt-1 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm" value="<?php echo htmlspecialchars($user['username']); ?>" required>
+                                                    </div>
+                                                    <div>
+                                                        <label class="text-sm font-medium">新密码 (留空则不修改)</label>
+                                                        <input type="password" name="new_password" class="mt-1 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm" placeholder="新密码">
+                                                    </div>
+                                                </div>
+                                                <div class="flex justify-end space-x-2">
+                                                    <form method="post" class="inline" onsubmit="return confirm('确定要删除此用户及其所有链接吗?');">
+                                                        <input type="hidden" name="action" value="delete_user">
+                                                        <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
+                                                        <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+                                                        <button type="submit" class="px-4 py-2 rounded-md text-sm font-medium text-destructive-foreground bg-destructive hover:bg-destructive/90">删除用户</button>
+                                                    </form>
+                                                    <button type="submit" class="px-4 py-2 rounded-md text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90">保存更改</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                            <div class="hidden md:block overflow-x-auto">
-                                <div class="inline-block min-w-full align-middle">
-                                    <div class="overflow-hidden border border-border rounded-lg shadow-sm">
-                                        <table class="min-w-full divide-y divide-border">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">用户名</th>
-                                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">创建时间</th>
-                                                    <th scope="col" class="relative px-6 py-3">
-                                                        <span class="sr-only">操作</span>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="bg-card divide-y divide-border">
-                                                <?php foreach ($users as $user): ?>
-                                                    <tr>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground"><?php echo htmlspecialchars($user['username']); ?></td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground"><?php echo date('Y-m-d H:i', strtotime($user['created_at'])); ?></td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                            <a href="?tab=users&edit_user=<?php echo $user['id']; ?>" class="text-indigo-600 hover:text-indigo-900">编辑</a>
-                                                            <form method="post" class="inline ml-2" onsubmit="return confirm('删除用户及其链接?');">
-                                                                <input type="hidden" name="action" value="delete_user">
-                                                                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
-                                                                <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
-                                                                <button type="submit" class="text-red-600 hover:text-red-900">删除</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php if ($edit_user_id && $edit_user): ?>
-                                <div class="mt-8">
-                                    <h3 class="text-xl font-bold mb-4">编辑用户: <?php echo htmlspecialchars($edit_user['username']); ?></h3>
-                                    <form method="post">
-                                        <input type="hidden" name="action" value="edit_user">
-                                        <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
-                                        <input type="hidden" name="user_id" value="<?php echo $edit_user_id; ?>">
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">新用户名</label>
-                                                <input type="text" name="new_username" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" value="<?php echo htmlspecialchars($edit_user['username']); ?>" required>
-                                            </div>
-                                            <div>
-                                                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">新密码（可选，留空不修改）</label>
-                                                <input type="password" name="new_password" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="新密码">
-                                            </div>
-                                            <button type="submit" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">保存更改</button>
-                                        </div>
-                                    </form>
-                                    <h4 class="text-lg font-semibold mt-6 mb-4">用户链接列表</h4>
-                                    <div class="overflow-x-auto">
-                                        <table class="min-w-full bg-card rounded-lg border border-border shadow-sm">
-                                            <thead>
-                                                <tr class="border-b border-border">
-                                                    <th class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">短链接</th>
-                                                    <th class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">长链接</th>
-                                                    <th class="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">点击量</th>
-                                                    <th class="px-6 py-3 text-right text-xs font-medium text-muted-foreground uppercase tracking-wider">操作</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="divide-y divide-border">
-                                                <?php foreach ($user_links as $link): ?>
-                                                    <tr>
-                                                        <td class="px-6 py-4 whitespace-nowrap">
-                                                            <div class="text-sm font-medium"><?php echo htmlspecialchars($short_domain_url . '/' . $link['shortcode']); ?></div>
-                                                        </td>
-                                                        <td class="px-6 py-4">
-                                                            <div class="text-sm text-muted-foreground truncate max-w-xs" title="<?php echo htmlspecialchars($link['longurl']); ?>"><?php echo htmlspecialchars($link['longurl']); ?></div>
-                                                        </td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-muted-foreground"><?php echo $link['clicks']; ?></td>
-                                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                            <button onclick="openEditLinkModal('<?php echo htmlspecialchars($link['shortcode']); ?>', '<?php echo htmlspecialchars(addslashes($link['longurl'])); ?>', <?php echo $link['enable_intermediate_page'] ? 'true' : 'false'; ?>, <?php echo $link['redirect_delay']; ?>, '<?php echo $link['link_password'] ? '***' : ''; ?>', '<?php echo $link['expiration_date'] ? htmlspecialchars($link['expiration_date']) : ''; ?>', '<?php echo $link['user_id'] ?: ''; ?>')" class="text-indigo-600 hover:text-indigo-900">编辑</button>
-                                                            <form method="post" class="inline ml-2" onsubmit="return confirm('删除?');">
-                                                                <input type="hidden" name="action" value="delete_link">
-                                                                <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($csrf_token); ?>">
-                                                                <input type="hidden" name="code" value="<?php echo htmlspecialchars($link['shortcode']); ?>">
-                                                                <button type="submit" class="text-red-600 hover:text-red-900">删除</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
                         </section>
                     <?php elseif ($active_tab === 'settings'): ?>
                         <section>

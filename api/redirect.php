@@ -31,13 +31,15 @@ if ($link['expiration_date'] && strtotime($link['expiration_date']) < time()) {
     </head>
     <body class="bg-background text-foreground min-h-screen flex flex-col">
         <?php include 'includes/header.php'; ?>
-        <div class="flex-grow flex items-center justify-center">
+        <main class="main-content flex-grow flex items-center justify-center">
             <div class="container mx-auto p-4 text-center">
-                <h2 class="text-2xl font-bold mb-4 text-destructive">链接已过期</h2>
-                <p class="text-muted-foreground mb-4">此短链接已过期，无法访问。</p>
-                <a href="/" class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90">返回首页</a>
+                <div class="max-w-lg mx-auto bg-card rounded-lg border p-6">
+                    <h2 class="text-2xl font-bold mb-4 text-destructive">链接已过期</h2>
+                    <p class="text-muted-foreground mb-4">此短链接已过期，无法访问。</p>
+                    <a href="/" class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90">返回首页</a>
+                </div>
             </div>
-        </div>
+        </main>
         <?php include 'includes/footer.php'; ?>
     </body>
     </html>
@@ -61,19 +63,19 @@ if (!empty($link['link_password'])) {
         </head>
         <body class="bg-background text-foreground min-h-screen flex flex-col">
             <?php include 'includes/header.php'; ?>
-            <div class="flex-grow flex items-center justify-center">
+            <main class="main-content flex-grow flex items-center justify-center">
                 <div class="max-w-md w-full p-6 bg-card rounded-lg border">
                     <h2 class="text-2xl font-bold mb-6 text-center">密码保护</h2>
                     <form method="post">
                         <input type="hidden" name="code" value="<?php echo htmlspecialchars($code); ?>">
                         <div class="mb-6">
                             <label class="block text-sm font-medium mb-2">请输入密码</label>
-                            <input type="password" name="password" class="w-full px-3 py-2 border border-input rounded-md" placeholder="密码" required>
+                            <input type="password" name="password" class="w-full px-3 py-2 border border-input rounded-md bg-transparent" placeholder="密码" required>
                         </div>
                         <button type="submit" class="w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-primary/90">验证并跳转</button>
                     </form>
                 </div>
-            </div>
+            </main>
             <?php include 'includes/footer.php'; ?>
         </body>
         </html>
@@ -114,7 +116,7 @@ if ($link['enable_intermediate_page']) {
     </head>
     <body class="bg-background text-foreground min-h-screen flex flex-col">
         <?php include 'includes/header.php'; ?>
-        <div class="flex-grow flex items-center justify-center">
+        <main class="main-content flex-grow flex items-center justify-center">
             <div class="container mx-auto p-4">
                 <div class="max-w-lg mx-auto bg-card rounded-lg border p-6 text-center">
                     <?php if ($intermediate_logo_url = get_setting($pdo, 'intermediate_logo_url')): ?>
@@ -129,7 +131,7 @@ if ($link['enable_intermediate_page']) {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
         <?php include 'includes/footer.php'; ?>
     </body>
     </html>
