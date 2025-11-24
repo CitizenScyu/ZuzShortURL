@@ -9,10 +9,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/JanePHPDev/ZuzShortURL)](https://github.com/JanePHPDev/ZuzShortURL/issues)
 
 A next-generation short URL SaaS solution built with PHP + PostgreSQL, tailored for startup teams, e-commerce platforms, and small to medium-sized enterprises. :rocket:
-
-[Live Demo](https://zuz.asia) | [Project Website](https://zeinklab.com/) | [中文文档](README_CN.MD)
-Demo Admin URL: https://zuz.asia/admin  
-Demo Admin Token: admintoken  
+[Project Website](https://zeinklab.com/) | [中文文档](README_CN.MD)  
 The demo site clears data periodically—please don't use it for long-term needs. For production short URL services, visit the official site.
 
 ![ZuzShortURL ui-View Screenshots](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/46cc19f8046633fa.png)
