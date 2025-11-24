@@ -14,6 +14,7 @@ A next-generation short URL SaaS solution built with PHP + PostgreSQL, tailored 
 Demo Admin URL: https://zuz.asia/admin  
 Demo Admin Token: admintoken  
 The demo site clears data periodically—please don't use it for long-term needs. For production short URL services, visit the official site.
+http://zeink.cc/lYaZf
 
 ![ZuzShortURL ui-View Screenshots](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/46cc19f8046633fa.png)
 
