@@ -8,14 +8,11 @@
 [![GitHub license](https://img.shields.io/github/license/JanePHPDev/ZuzShortURL)](https://github.com/JanePHPDev/ZuzShortURL/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/JanePHPDev/ZuzShortURL)](https://github.com/JanePHPDev/ZuzShortURL/issues)
 
-A next-generation short URL SaaS solution built with PHP + PostgreSQL, tailored for startup teams, e-commerce platforms, and small to medium-sized enterprises. :rocket:
+A next-generation short URL SaaS solution built with PHP + PostgreSQL, tailored for startup teams, e-commerce platforms, and small to medium-sized enterprises. :rocket:  
 [Project Website](https://zeinklab.com/) | [中文文档](README_CN.MD)  
 The demo site clears data periodically—please don't use it for long-term needs. For production short URL services, visit the official site.
 
 ![ZuzShortURL ui-View Screenshots](https://cdn.mengze.vip/gh/JanePHPDev/Blog-Static-Resource@main/images/feb5aa72c86265b2.png)
-
-
-![Star History Chart](https://api.star-history.com/svg?repos=JanePHPDev/ZuzShortURL&type=Date)
 
 ## Table of Contents
 
