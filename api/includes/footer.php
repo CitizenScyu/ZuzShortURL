@@ -3,7 +3,7 @@
     <!-- 图标和标题 -->
     <a href="https://t.me/CitizenScyureview" target="_blank" rel="noreferrer" 
        class="flex items-center gap-3 transition-opacity hover:opacity-80">
-      <img src="https://cloudpaste-backend.scyucitizen1.workers.dev/api/file-download/ico" 
+      <img src="https://backend.cloud.us.kg/api/s/ico/IMG_20251115_215729_329.jpg" 
            alt="Logo" 
            class="h-8 w-8 rounded-lg shadow-sm">
       <span class="text-base font-semibold text-foreground">麦克阿象的笔记</span>
