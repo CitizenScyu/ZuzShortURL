@@ -9,4 +9,5 @@
       <span class="text-base font-semibold text-foreground">麦克阿象的笔记</span>
     </a>
   </div>
+  <script defer src="https://tongji.cloud.us.kg/daxiang" data-website-id="3b83f76a-0e49-4131-843e-040d0d655dd7"></script>
 </footer>
